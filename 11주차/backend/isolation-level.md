@@ -84,6 +84,12 @@ Non-Repeatable Read는 기존 행의 값이 바뀌는 문제고, Phantom Read는
 - 읽는 트랜잭션은 락 없이 **자기가 볼 수 있는 버전**을 Undo Log에서 찾아 읽는다.
 - 그래서 **읽기는 쓰기를 막지 않고, 쓰기도 읽기를 막지 않는다.**
 
+![최신 레코드에서 Undo Log로 이어지는 버전 체인](./images/mvcc-undo-log.png)
+
+> 출처: [MVCC(Multi Version Concurrency Control)와 Read View 알아보기 (velog @young_gyu)](https://velog.io/@young_gyu/MVCCMulti-Version-Concurrency-Control에-관하여)
+
+각 행에는 마지막으로 수정한 트랜잭션 ID(`DB_TRX_ID`)와 이전 버전을 가리키는 포인터(`DB_ROLL_PTR`)가 숨어 있다. 읽는 트랜잭션은 이 포인터를 따라가면서 자기가 볼 수 있는 버전을 찾는다.
+
 ```mermaid
 sequenceDiagram
     participant T1 as T1 (REPEATABLE READ)

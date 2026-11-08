@@ -42,6 +42,10 @@ Spring은 트랜잭션을 두 단계로 나눠서 본다.
 
 실제 커밋과 롤백은 **처음 트랜잭션을 시작한 외부 트랜잭션**만 한다. 내부 트랜잭션이 커밋해도 DB에는 아무 일도 없다.
 
+![하나의 물리 트랜잭션 안의 논리 트랜잭션 두 개](./images/physical-logical-tx.png)
+
+> 출처: [[Spring DB] 트랜잭션 전파 동작 과정 알아보기 (velog @semi-cloud)](https://velog.io/@semi-cloud/Spring-DB-트랜잭션-전파)
+
 ## 전파 옵션
 
 | 옵션 | 기존 트랜잭션 있음 | 기존 트랜잭션 없음 |
@@ -98,6 +102,10 @@ sequenceDiagram
 - 외부 트랜잭션이 커밋하려고 보니 rollback-only가 표시돼 있어서 롤백한다.
 - 개발자는 커밋을 기대했는데 롤백됐으니 이를 알리려고 `UnexpectedRollbackException`을 던진다.
 
+![내부 롤백이 rollback-only로 표시되고 외부 커밋 시점에 전체가 롤백되는 흐름](./images/required-rollback-only.png)
+
+> 출처: [[Spring DB] 트랜잭션 전파 동작 과정 알아보기 (velog @semi-cloud)](https://velog.io/@semi-cloud/Spring-DB-트랜잭션-전파)
+
 ## REQUIRES_NEW
 
 ```java
@@ -111,6 +119,10 @@ public class PointService {
 - 외부 트랜잭션과 **다른 DB 커넥션**으로 완전히 별개의 물리 트랜잭션을 연다.
 - 내부가 롤백돼도 외부는 영향을 받지 않는다. (예외를 외부에서 잡는다면)
 - 외부가 롤백돼도 이미 커밋된 내부는 남는다.
+
+![REQUIRES_NEW로 커넥션과 물리 트랜잭션이 따로 관리되는 모습](./images/requires-new.png)
+
+> 출처: [[Spring DB] 트랜잭션 전파 동작 과정 알아보기 (velog @semi-cloud)](https://velog.io/@semi-cloud/Spring-DB-트랜잭션-전파)
 
 **쓰는 곳**
 

@@ -22,3 +22,8 @@
 
 - Martin Kleppmann, 『데이터 중심 애플리케이션 설계』 7장 트랜잭션, 위키북스
 - 백은빈, 이성욱, 『Real MySQL 8.0』 5장 트랜잭션과 잠금, 위키북스
+
+## 그림 출처
+
+- [MVCC(Multi Version Concurrency Control)와 Read View 알아보기 (velog @young_gyu)](https://velog.io/@young_gyu/MVCCMulti-Version-Concurrency-Control에-관하여)
+- [[Spring DB] 트랜잭션 전파 동작 과정 알아보기 (velog @semi-cloud)](https://velog.io/@semi-cloud/Spring-DB-트랜잭션-전파)

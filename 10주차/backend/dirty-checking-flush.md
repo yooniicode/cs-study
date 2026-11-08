@@ -37,6 +37,10 @@ sequenceDiagram
 3. 바뀐 엔티티가 있으면 UPDATE SQL을 만들어 쓰기 지연 저장소에 넣는다.
 4. 쌓인 SQL을 DB로 보내고 커밋한다.
 
+![변경 감지와 flush 과정](./images/flush-process.png)
+
+> 출처: [JPA 영속성 컨텍스트 (velog @xlddy02)](https://velog.io/@xlddy02/JPA-영속성-컨텍스트)
+
 ### 알아둘 점
 
 - **영속 상태에서만** 동작한다. 준영속이나 비영속 엔티티는 값을 바꿔도 아무 일도 없다.

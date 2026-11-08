@@ -19,6 +19,10 @@
 
 스냅샷은 엔티티가 처음 영속 상태가 됐을 때의 값이다. 변경 감지에서 쓴다. ([Dirty Checking](./dirty-checking-flush.md))
 
+![1차 캐시와 스냅샷](./images/first-level-cache.png)
+
+> 출처: [JPA 영속성 컨텍스트 (velog @hyunn)](https://velog.io/@hyunn/JPA-영속성-컨텍스트)
+
 ## 조회 흐름
 
 ```java
@@ -73,6 +77,10 @@ public void join() {
 - SQL을 모아뒀다가 flush 시점에 한 번에 보낸다.
 - `hibernate.jdbc.batch_size`를 설정하면 JDBC 배치로 묶어서 보낼 수 있다.
   - `IDENTITY` 전략은 `persist()` 때 INSERT를 바로 실행해야 해서 INSERT 배치가 안 된다.
+
+![persist 시 쓰기 지연 SQL 저장소에 INSERT가 쌓이는 모습](./images/write-behind.png)
+
+> 출처: [JPA 영속성 컨텍스트 (velog @hyunn)](https://velog.io/@hyunn/JPA-영속성-컨텍스트)
 
 ## 1차 캐시의 한계
 

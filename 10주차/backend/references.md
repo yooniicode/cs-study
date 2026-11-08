@@ -19,3 +19,8 @@
 ## 책
 
 - 김영한, 『자바 ORM 표준 JPA 프로그래밍』, 에이콘출판사
+
+## 그림 출처
+
+- [JPA 영속성 컨텍스트 (velog @hyunn)](https://velog.io/@hyunn/JPA-영속성-컨텍스트)
+- [JPA 영속성 컨텍스트 (velog @xlddy02)](https://velog.io/@xlddy02/JPA-영속성-컨텍스트)
